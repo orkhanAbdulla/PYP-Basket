@@ -1,0 +1,28 @@
+﻿@model PYP_FtontToBack.Models.ProductPhoto
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_MasterLayout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>ProductPhoto</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form enctype="multipart/form-data" asp-action="Create"
+              class="dropzone"
+              id="my-awesome-dropzone">
+            <input asp-for="ProductId" type="hidden" value="@ViewBag.Id" />
+            <div class="fallback">
+                <input asp-for="File" multiple />
+            </div>
+          </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

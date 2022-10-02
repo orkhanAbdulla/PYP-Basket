@@ -1,0 +1,44 @@
+﻿@model List<BasketViewModel>
+
+
+<div class="offcanvas-minicart_wrapper" id="miniCart">
+    <div class="minicart-inner">
+        <div class="close-btn-box">
+            <a href="#" class="close-button"><i class="icon-rt-close-outline"></i></a>
+        </div>
+        <div class="minicart-content">
+            <h6 class="mini-cart-title">YOUR CART</h6>
+            <ul class="minicart-list">
+                @if (Model!=null && Model.Count==0)
+                {
+                   @foreach (var item in Model)
+                    {
+                        <li class="minicart-product">
+                            <a class="product-item_img">
+                                <img class="img-fluid" src="~assets/images/products/cart/@item.Image" alt="Product Image">
+                            </a>
+                            <div class="product-item_content">
+                                <a class="product-item_title" href="product-details.html">@item.ProductName</a>
+                                <label class="product-item_quantity"><span>@item.Count</span> x<span> $@item.Price</span></label>
+                            </div>
+                            <a asp-action="RemoveItem" asp-controller="Home" asp-route-id="@item.Id" class="product-item_remove" href="javascript:void(0)"><i class="icon-rt-close-outline"></i></a>
+                        </li>
+                    }
+                }
+             
+            </ul>
+        </div>
+        <div class="minicart-item_total">
+            <span class="font-weight--reguler">Subtotal:</span>
+            <span class="ammount font-weight--reguler">$@Model.Sum(x=>x.Price*x.Count)</span>
+        </div>
+        <div class="minicart-btn_area">
+            <a href="shopping-cart.html" class="btn btn--full btn--primary">View cart</a>
+        </div>
+
+        <div class="minicart-btn_area">
+            <a href="checkout.html" class="btn btn--full btn--primary">Checkout</a>
+        </div>
+    </div>
+    <div class="global-overlay"></div>
+</div>
